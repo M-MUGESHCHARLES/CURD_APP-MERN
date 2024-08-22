@@ -2,32 +2,35 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function Form() {
-  const [Eid, setId] = useState(0);
+  const [employeeId, setEmployeeId] = useState();
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
 
  const handleSubmit = (event) => {
     event.preventDefault();
 
     const Details = {
-        Eid,
+        employeeId,
         firstname,
         lastname,
         email,
         phone,
-        address,
+        city,
     };
 
     console.log('Form Details:', Details);  // Log the form data
 
-    const url = "http://localhost:4200/Form/AddEmployees";
+    const url = "http://localhost:4200/Form";
 
     axios.post(url, Details)
     .then((res) => {
         console.log(res.data);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
         alert("Employee added successfully");
     })
     .catch((err) => {
@@ -40,18 +43,19 @@ export default function Form() {
   return (
     <section className="py-5">
       <form
-        className="col-12 d-flex flex-column mx-auto py-4 px-5 border border-secondary-subtle rounded-5"
+        className="col-12 d-flex flex-column mx-auto py-4 px-5 border border-secondary-subtle rounded-5 shadow"
         onSubmit={handleSubmit}
       >
         <label className="form-label mb-3">
-          <span className="fw-bold text-secondary">ID:</span>
+          <span className="fw-bold text-secondary">Employee ID:</span>
           <input
             className="form-control w-25"
             type="number"
             name="Eid"
             placeholder="Employee ID"
-            value={Eid}
-            onChange={(e) => setId(e.target.value)}
+            value={employeeId}
+            onChange={(e) => setEmployeeId(e.target.value)}
+            required
           />
         </label>
         <label className="form-label mb-3">
@@ -63,6 +67,7 @@ export default function Form() {
             placeholder="First Name"
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
+            required
           />
         </label>
         <label className="form-label mb-3">
@@ -74,6 +79,7 @@ export default function Form() {
             placeholder="Last Name"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
+            required
           />
         </label>
         <label className="form-label mb-3">
@@ -85,6 +91,7 @@ export default function Form() {
             placeholder="Employee E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </label>
         <label className="form-label mb-3">
@@ -96,16 +103,18 @@ export default function Form() {
             placeholder="Employee Phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            required
           />
         </label>
         <label className="form-label mb-3">
-          <span className="fw-bold text-secondary">Address:</span>
-          <textarea
-            className="form-control"
+          <span className="fw-bold text-secondary">City:</span>
+          <input
+            className="form-control w-75"
             name="address"
-            placeholder="Employee Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Employee City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            required
           />
         </label>
         <div className="my-2 px-5">
@@ -113,10 +122,10 @@ export default function Form() {
         </div>
         <button
           type="submit"
-          className="btn btn-outline-warning fw-bold w-50 mx-auto"
+          className="btn btn-outline-warning fw-bold w-50 mx-auto shadow"
         >
-          {" "}
-          Submit{" "}
+          
+          Submit
         </button>
       </form>
     </section>

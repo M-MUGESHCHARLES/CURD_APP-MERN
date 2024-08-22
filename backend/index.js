@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bodyParser = require("body-parser"); // Add this line
+const bodyParser = require("body-parser"); 
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json()); // Add this line
+app.use(bodyParser.json()); 
 
 const port = 4200;
 
@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   res.send("hello express is running");
 });
 
-app.use("/Form", Routes);
+app.use("/", Routes);
 
 // Listening to the port...
 app.listen(port, () => {

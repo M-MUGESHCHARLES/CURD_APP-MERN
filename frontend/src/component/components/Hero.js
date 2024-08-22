@@ -6,9 +6,11 @@ export default function Hero() {
   return (
     <div>
       <div className="px-4 py-5 text-center ">
-        <h1 className="display-5 fw-bold text-body-emphasis ">CompanY</h1>
+        <h1 className="display-5 fw-bold text-body-emphasis ">
+          <span className='Color_text '>C</span><span className=''>ompan</span><span className='Color_text '>Y</span>
+        </h1>
 
-        <div className='row'>
+        <div className='row mt-3'>
           <div className='col col-md-5 mx-auto px-5 py-5'>
             <img src={Office} alt='' className='image-fluid' height='auto' width='90%' />
           </div>        
@@ -24,12 +26,12 @@ export default function Hero() {
               </p>
               <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3 mt-lg-4 ">
                 <Link to='/Form'>
-                    <button type="button" className="fs-6 fw-semibold  btn btn-secondary btn-lg px-4 mx-2 ">
+                    <button type="button" className="fs-6 fw-semibold  btn btn-secondary btn-lg px-4 mx-1 mx-lg-3 shadow">
                       Add Employees
                     </button>
                 </Link>
                 <Link to='/Details'>
-                    <button type="button" className="fs-6 fw-semibold btn btn-outline-secondary btn-lg px-4 mx-2">
+                    <button type="button" className="fs-6 fw-semibold btn btn-outline-secondary btn-lg px-4 mx-1 mx-lg-3 shadow">
                       View Employees
                     </button>
                 </Link>
