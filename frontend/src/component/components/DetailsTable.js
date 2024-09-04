@@ -9,7 +9,7 @@ export default function DetailsTable() {
   const [employees , setEmployees] = useState([]);
 
   useEffect(()=> {
-    const url = "http://localhost:4200/Details";
+    const url = "https://curd-app-mern.onrender.com/Details";
 
     axios.get(url)
     .then((res) => {
@@ -21,7 +21,7 @@ export default function DetailsTable() {
   },[]);
 
   const handleDelete = (id) => {
-    const url = `http://localhost:4200/Delete/${id}`;
+    const url = `https://curd-app-mern.onrender.com/Delete/${id}`;
 
     axios.delete(url)
     .then((res) => {
