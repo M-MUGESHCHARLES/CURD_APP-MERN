@@ -29,7 +29,7 @@ export default function Form() {
     .then((res) => {
         console.log(res.data);
         setTimeout(() => {
-          window.location.reload();
+          window.location.replace('/Details');
         }, 2000);
         alert("Employee added successfully");
     })
